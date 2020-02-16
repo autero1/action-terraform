@@ -65,18 +65,29 @@ export function findExecutable(rootFolder: string): string {
 }
 
 export async function downloadTerraform(version: string): Promise<string> {
+  core.info(`[INFO] Setting up Terraform version: '${version}'`);
   let cachedToolpath = toolCache.find(executableName, version);
   if (!cachedToolpath) {
     let dlPath: string;
     const dlURL = getDownloadURL(version);
+    core.info(`[INFO] Downloading from: '${dlURL}'`);
     try {
       dlPath = await toolCache.downloadTool(dlURL);
     } catch (exception) {
       throw new Error(util.format('Failed to download Terraform from ', dlURL));
     }
 
+    // Changing temp path permissions
     fs.chmodSync(dlPath, '777');
     const unzippedPath = await toolCache.extractZip(dlPath);
+    core.info(`[INFO] Unzipped to: '${unzippedPath}'`);
+
+    // Make it executable
+    const absExecutable = `'${unzippedPath}'/'${executableName}'`;
+    core.info(`[INFO] Setting file permissions 755 to: '${absExecutable}'`);
+    fs.chmodSync(absExecutable, '755');
+
+    // Cache the tool
     cachedToolpath = await toolCache.cacheDir(
       unzippedPath,
       executableName,
