@@ -1,0 +1,16 @@
+name: 'Terraform installer'
+description: 'Install a specific version of terraform binary.'
+author: 'Petri Autero'
+inputs:
+  terraform_version:
+    description: 'Terraform version to install'
+    required: true
+outputs:
+  terraform_path:
+    description: 'Path to the terraform binary'
+branding:
+  icon: cloud
+  color: 'orange'
+runs:
+  using: 'node12'
+  main: 'lib/index.js'
