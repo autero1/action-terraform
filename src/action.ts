@@ -83,7 +83,7 @@ export async function downloadTerraform(version: string): Promise<string> {
     core.info(`[INFO] Unzipped to: '${unzippedPath}'`);
 
     // Make it executable
-    const absExecutable = `'${unzippedPath}'/'${executableName}'`;
+    const absExecutable = `${unzippedPath}/${executableName}`;
     core.info(`[INFO] Setting file permissions 755 to: '${absExecutable}'`);
     fs.chmodSync(absExecutable, '755');
 
