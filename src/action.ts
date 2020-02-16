@@ -18,8 +18,6 @@ export function getExecutableExtension(): string {
   return '';
 }
 
-const fullExecutableName = 'terraform' + getExecutableExtension();
-
 export function getDownloadURL(version: string): string {
   switch (os.type()) {
     case 'Windows_NT':
@@ -85,10 +83,10 @@ export async function downloadTerraform(version: string): Promise<string> {
     const unzippedPath = await toolCache.extractZip(dlPath);
     core.info(`[INFO] Unzipped to: '${unzippedPath}'`);
 
-    // Make it executable
-    const absExecutable = `${unzippedPath}${path.sep}${fullExecutableName}`;
-    core.info(`[INFO] Setting file permissions 755 to: '${absExecutable}'`);
-    fs.chmodSync(absExecutable, '755');
+    // Make it executable: NOTE: we don't need to do this, but adding for future ref
+    // const absExecutable = `${unzippedPath}${path.sep}${fullExecutableName}`;
+    // core.info(`[INFO] Setting file permissions 755 to: '${absExecutable}'`);
+    // fs.chmodSync(absExecutable, '755');
 
     // Cache the tool
     cachedToolpath = await toolCache.cacheDir(
