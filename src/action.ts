@@ -11,11 +11,14 @@ const downloadUrlFormat =
   'https://releases.hashicorp.com/terraform/%s/terraform_%s_%s_amd64.zip';
 
 export function getExecutableExtension(): string {
+  core.info(`[INFO] OS Type: '${os.type()}'`);
   if (os.type().match(/^Win/)) {
     return '.exe';
   }
   return '';
 }
+
+const fullExecutableName = 'terraform' + getExecutableExtension();
 
 export function getDownloadURL(version: string): string {
   switch (os.type()) {
@@ -83,7 +86,7 @@ export async function downloadTerraform(version: string): Promise<string> {
     core.info(`[INFO] Unzipped to: '${unzippedPath}'`);
 
     // Make it executable
-    const absExecutable = `${unzippedPath}/${executableName}`;
+    const absExecutable = `${unzippedPath}${path.sep}${fullExecutableName}`;
     core.info(`[INFO] Setting file permissions 755 to: '${absExecutable}'`);
     fs.chmodSync(absExecutable, '755');
 
