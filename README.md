@@ -52,6 +52,23 @@ This action has been tested on the following platforms:
 * windows-latest
 * macos-latest
 
+
+## Contributing
+
+Contributions to this repository are very welcome! We follow a fairly standard [pull request process](
+https://help.github.com/articles/about-pull-requests/) for contributions, subject to the following guidelines:
+
+1. File a GitHub issue
+1. Fork the repository
+1. Update the documentation
+1. Update the tests
+1. Update the code
+1. Create a pull request
+1. (Merge and release)
+
+The maintainers for this repo will review your code and provide feedback. If everything looks good, they will merge the
+code and release a new version, which you'll be able to find in the [releases page](/releases).
+
 ## License
 
 The scripts and documentation in this project are released under the [MIT](./LICENSE) license.
