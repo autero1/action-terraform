@@ -4,7 +4,7 @@ import * as fs from 'fs';
 import * as os from 'os';
 import * as path from 'path';
 import * as util from 'util';
-import {getInputs} from './get-inputs';
+import {getInputs, getOutputs} from './get-inputs-and-outputs';
 
 const executableName = 'terraform';
 const downloadUrlFormat =
@@ -109,5 +109,5 @@ export async function run(): Promise<void> {
   core.info(
     `[INFO] Terraform version: '${terraformVersion}' has been cached at ${cachedPath}`
   );
-  core.setOutput('terraform-path', cachedPath);
+  core.setOutput(getOutputs().TerraformPath, cachedPath);
 }

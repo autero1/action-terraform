@@ -1,5 +1,5 @@
 import * as core from '@actions/core';
-import {Inputs} from './interfaces';
+import {Inputs, Outputs} from './interfaces';
 
 function showInputs(inps: Inputs): void {
   core.info(`[INFO] TerraformVersion: ${inps.TerraformVersion}`);
@@ -13,4 +13,12 @@ export function getInputs(): Inputs {
   showInputs(inps);
 
   return inps;
+}
+
+export function getOutputs(): Outputs {
+  const outs: Outputs = {
+    TerraformPath: 'terraform_path'
+  };
+
+  return outs;
 }

@@ -1,5 +1,5 @@
-import {Inputs} from '../src/interfaces';
-import {getInputs} from '../src/get-inputs';
+import {Inputs, Outputs} from '../src/interfaces';
+import {getInputs, getOutputs} from '../src/get-inputs-and-outputs';
 
 beforeEach(() => {
   jest.resetModules();
@@ -16,5 +16,11 @@ describe('getInputs()', () => {
     const inputs: Inputs = getInputs();
 
     expect(inputs.TerraformVersion).toMatch('0.12.20');
+  });
+
+  test('get spec outputs', () => {
+    const outputs: Outputs = getOutputs();
+
+    expect(outputs.TerraformPath).toMatch('terraform_path');
   });
 });
