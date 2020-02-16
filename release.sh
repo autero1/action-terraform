@@ -27,7 +27,7 @@ fi
 
 git fetch origin
 git pull origin master
-git tag -d v3 || true
+git tag -d v0 || true
 git pull origin --tags
 
 npm ci
