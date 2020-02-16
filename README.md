@@ -32,13 +32,21 @@ jobs:
         run: terraform --version
 ```
 
-### Required input parameters
+### Inputs
+
+| Parameter | Description | Required |
+| --------- | ----------- | -------- |
+| `terraform_version` | Terraform [version](https://releases.hashicorp.com/terraform/) to deploy | true |
+
+### Outputs
 
 | Parameter | Description |
 | --------- | ----------- |
-| `terraform_version` | Terraform [version](https://releases.hashicorp.com/terraform/) to deploy |
+| `terraform_path` | Cached tool path of Terraform |
 
 ### Supported platforms
+
+This action has been tested on the following platforms:
 
 * ubuntu-18.04
 * windows-latest
