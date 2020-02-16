@@ -110,13 +110,8 @@ export async function run(): Promise<void> {
   const terraformVersion: string = getInputs().TerraformVersion;
   const cachedPath = await downloadTerraform(terraformVersion);
 
-  try {
-    if (!process.env['PATH'] || ''.startsWith(path.dirname(cachedPath))) {
-      core.addPath(path.dirname(cachedPath));
-    }
-  } catch {
-    //no-op
-  }
+  // Add the cached tool to path
+  core.addPath(path.dirname(cachedPath));
   core.info(
     `[INFO] Terraform version: '${terraformVersion}' has been cached at ${cachedPath}`
   );
