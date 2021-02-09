@@ -1,6 +1,6 @@
 {
   "name": "action-terraform",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "GitHub action for setting up Terraform",
   "author": "Petri Autero",
   "license": "MIT",
