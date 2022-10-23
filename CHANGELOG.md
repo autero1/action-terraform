@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [1.1.0](https://github.com/autero1/action-terraform/compare/v1.0.3...v1.1.0) (2022-10-23)
+
+
+### ci
+
+* add dependabot ([9ea9b0c](https://github.com/autero1/action-terraform/commit/9ea9b0c50daeace00c156ece762fec3af2e9dadd))
+* update eslint dependencies ([c7fc97b](https://github.com/autero1/action-terraform/commit/c7fc97bc293b52fcedd04228fd51829e23cf5e2a))
+* update nodejs (12->16) and dependencies ([82f41d4](https://github.com/autero1/action-terraform/commit/82f41d491842b0af5e684270679ca2f61a4e3177))
+
+
+
 ## [1.0.3](https://github.com/autero1/action-terraform/compare/v1.0.2...v1.0.3) (2021-09-03)
 
 
