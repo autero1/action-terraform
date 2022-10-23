@@ -1,11 +1,14 @@
 import * as os from 'os';
 import {getDownloadURL} from '../src/action';
-import got from 'got';
+
+import * as got from 'got';
+
+const theGot = got.default;
 
 jest.mock('os');
 
 async function checkHead(url: string): Promise<number> {
-  const response = await got.head(url);
+  const response = await theGot.head(url);
   return response.statusCode;
 }
 

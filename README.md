@@ -25,9 +25,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Setup Terraform
-        uses: autero1/action-terraform@v0.1.0
+        uses: autero1/action-terraform@v1.1.0
         with:
-          terraform_version: 0.12.20
+          terraform_version: 1.2.8
       - name: Interact with Terraform
         run: terraform --version
 ```
