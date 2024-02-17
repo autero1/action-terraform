@@ -10,7 +10,7 @@ Set up your GitHub Actions workflow with a specific version of [Terraform](https
 
 ## Usage
 
-The next example step will install Terraform 0.12.20.
+The next example step will install Terraform 1.2.8.
 
 ```yaml
 name: Example workflow
@@ -25,7 +25,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Setup Terraform
-        uses: autero1/action-terraform@v1.1.0
+        uses: autero1/action-terraform@v2
         with:
           terraform_version: 1.2.8
       - name: Interact with Terraform
