@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [2.0.0](https://github.com/autero1/action-terraform/compare/v1.1.1...v2.0.0) (2024-02-17)
+
+
+### feat
+
+* use upgrade node from 16 to 20 ([10176a4](https://github.com/autero1/action-terraform/commit/10176a45782be2a4facaa81a20cae0f265633f18))
+
+
+
 ## [1.1.1](https://github.com/autero1/action-terraform/compare/v1.1.0...v1.1.1) (2023-01-25)
 
 
