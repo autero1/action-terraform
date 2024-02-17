@@ -48,7 +48,7 @@ jobs:
 
 This action has been tested on the following platforms:
 
-* ubuntu-18.04
+* ubuntu-22.04
 * windows-latest
 * macos-latest
 
