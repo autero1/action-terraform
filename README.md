@@ -1,7 +1,7 @@
-[![license](https://img.shields.io/github/license/autero1/action-terraform)](https://github.com/autero1/action-terraform/blob/master/LICENSE)
+[![license](https://img.shields.io/github/license/autero1/action-terraform)](https://github.com/autero1/action-terraform/blob/main/LICENSE)
 [![release](https://img.shields.io/github/release/autero1/action-terraform)](https://github.com/autero1/action-terraform/releases/latest)
 [![GitHub release date](https://img.shields.io/github/release-date/autero1/action-terraform.svg)](https://github.com/autero1/action-terraform/releases)
-![Test Action](https://github.com/autero1/action-terraform/workflows/Test%20Action/badge.svg?branch=master&event=push)
+![Test Action](https://github.com/autero1/action-terraform/workflows/Test%20Action/badge.svg?branch=main&event=push)
 [![CodeFactor](https://www.codefactor.io/repository/github/autero1/action-terraform/badge)](https://www.codefactor.io/repository/github/autero1/action-terraform)
 
 # Setup Terraform GitHub Action
