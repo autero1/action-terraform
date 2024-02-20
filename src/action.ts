@@ -4,9 +4,12 @@ import * as fs from 'fs';
 import * as os from 'os';
 import * as path from 'path';
 import * as util from 'util';
+import got from 'got';
 import {getInputs, getOutputs} from './get-inputs-and-outputs';
 
 const executableName = 'terraform';
+const tfCheckpointApiUrl =
+  'https://checkpoint-api.hashicorp.com/v1/check/terraform';
 const downloadUrlFormat =
   'https://releases.hashicorp.com/terraform/%s/terraform_%s_%s_amd64.zip';
 
@@ -32,6 +35,22 @@ export function getDownloadURL(version: string): string {
   }
 }
 
+type ResponseBody = {
+  current_version: string;
+};
+
+export const getLatestVersion = async (): Promise<string | null> => {
+  try {
+    const response = await got.get(tfCheckpointApiUrl, {followRedirect: false});
+    const responseBody: ResponseBody = JSON.parse(response.body);
+    return responseBody.current_version;
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      throw new Error(`Failed to get the latest version: ${error.message}`);
+    }
+    throw new Error('Failed to get the latest version');
+  }
+};
 const walkSync = function (
   dir: string,
   filelist: string[],
@@ -64,12 +83,22 @@ export function findExecutable(rootFolder: string): string {
   }
 }
 
-export async function downloadTerraform(version: string): Promise<string> {
-  core.info(`[INFO] Setting up Terraform version: '${version}'`);
-  let cachedToolpath = toolCache.find(executableName, version);
+export async function downloadTerraform(theVersion: string): Promise<string> {
+  core.info(`[INFO] Setting up Terraform version: '${theVersion}'`);
+
+  let actualVersion = theVersion;
+
+  // Get latest version number and reassign version param to it.
+  if (theVersion.toLowerCase() === 'latest') {
+    const latestVersion = await getLatestVersion();
+    actualVersion = latestVersion || '';
+    core.info(`[INFO] Latest Terragrunt version: '${actualVersion}'`);
+  }
+
+  let cachedToolpath = toolCache.find(executableName, actualVersion);
   if (!cachedToolpath) {
     let dlPath: string;
-    const dlURL = getDownloadURL(version);
+    const dlURL = getDownloadURL(actualVersion);
     core.info(`[INFO] Downloading from: '${dlURL}'`);
     try {
       dlPath = await toolCache.downloadTool(dlURL);
@@ -91,7 +120,7 @@ export async function downloadTerraform(version: string): Promise<string> {
     cachedToolpath = await toolCache.cacheDir(
       unzippedPath,
       executableName,
-      version
+      actualVersion
     );
   }
 

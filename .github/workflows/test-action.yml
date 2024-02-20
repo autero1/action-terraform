@@ -56,6 +56,14 @@ jobs:
       - name: Validate
         run: terraform --version
 
+      - name: Install latest Terraform version
+        uses: ./
+        with:
+          terraform-version: latest
+
+      - name: Validate latest
+        run: terraform --version
+
       - name: Install Terraform with version file specified version
         uses: ./
         with:

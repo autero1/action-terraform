@@ -1,7 +1,7 @@
 import * as assert from 'assert';
 import os from 'node:os';
 import got from 'got';
-import {getDownloadURL} from '../src/action';
+import {getDownloadURL, getLatestVersion} from '../src/action';
 import {afterEach, describe, it, mock} from 'node:test';
 
 afterEach(() => {
@@ -61,6 +61,19 @@ describe('getDownloadURL()', () => {
       linuxDLUrl,
       'https://releases.hashicorp.com/terraform/0.12.20/terraform_0.12.20_linux_amd64.zip'
     );
+    assert.strictEqual(await checkHead(linuxDLUrl), 200);
+  });
+
+  it('get latest url', async () => {
+    process.env['INPUT_TERRAFORM-VERSION'] = 'latest';
+    const latestVersion = (await getLatestVersion()) || '';
+    mock.method(os, 'type', () => {
+      return 'Linux';
+    });
+    mock.method(os, 'arch', () => {
+      return 'x64';
+    });
+    const linuxDLUrl = getDownloadURL(latestVersion);
     assert.strictEqual(await checkHead(linuxDLUrl), 200);
   });
 });
