@@ -92,7 +92,7 @@ export async function downloadTerraform(theVersion: string): Promise<string> {
   if (theVersion.toLowerCase() === 'latest') {
     const latestVersion = await getLatestVersion();
     actualVersion = latestVersion || '';
-    core.info(`[INFO] Latest Terragrunt version: '${actualVersion}'`);
+    core.info(`[INFO] Latest Terraform version: '${actualVersion}'`);
   }
 
   let cachedToolpath = toolCache.find(executableName, actualVersion);
