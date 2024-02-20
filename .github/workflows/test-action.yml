@@ -3,9 +3,7 @@ name: Test Action
 on:
   push:
     branches:
-      - "*"
-    paths-ignore:
-      - "*.md"
+      - "**"
   # A pull request sent from a fork of the upstream repository could be manipulated to do harmful things.
   # The upstream repository’s maintainer would have no protection against this attack, as pull requests
   # can be sent by anyone who forks the repository on GitHub.
@@ -56,4 +54,20 @@ jobs:
           terraform_version: 1.2.8
 
       - name: Validate
+        run: terraform --version
+
+      - name: Install Terraform with version file specified version
+        uses: ./
+        with:
+          terraform-version-file: .terraform-version
+
+      - name: Validate version file specified version
+        run: terraform --version
+
+      - name: Install Terraform with version file latest
+        uses: ./
+        with:
+          terraform-version-file: .terraform-version-latest
+
+      - name: Validate version file latest
         run: terraform --version
