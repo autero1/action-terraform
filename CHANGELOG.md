@@ -1,6 +1,33 @@
 # Changelog
 
 
+## [3.0.0](https://github.com/autero1/action-terraform/compare/v2.0.0...v3.0.0) (2024-02-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* **action:** change inputs/outputs from underscores to dashes
+* **action:** use an optional version file to specify Terraform version (one of terraform-version or terraform-version-file required
+
+### Features
+
+* **action:** Terraform version `latest` now resolves to the latest release version ([c54a1c7](https://github.com/autero1/action-terraform/commit/c54a1c71b05adaf8a23a15b90b5827c3cc08061b))
+* **action:** use an optional version file to specify Terraform version (one of terraform-version or terraform-version-file required ([c54a1c7](https://github.com/autero1/action-terraform/commit/c54a1c71b05adaf8a23a15b90b5827c3cc08061b))
+* **action:** use an optional version file to specify Terraform version (one of terraform-version or terraform-version-file required ([c54a1c7](https://github.com/autero1/action-terraform/commit/c54a1c71b05adaf8a23a15b90b5827c3cc08061b))
+
+
+### Bug Fixes
+
+* **deps-dev:** upgrade dev dependencies ([c54a1c7](https://github.com/autero1/action-terraform/commit/c54a1c71b05adaf8a23a15b90b5827c3cc08061b))
+* **deps:** upgrade dependencies ([c54a1c7](https://github.com/autero1/action-terraform/commit/c54a1c71b05adaf8a23a15b90b5827c3cc08061b))
+* **lint:** resolve linting issues across the codebase ([c54a1c7](https://github.com/autero1/action-terraform/commit/c54a1c71b05adaf8a23a15b90b5827c3cc08061b))
+* **tests:** use proper glob pattern to run tests on all branches ([c54a1c7](https://github.com/autero1/action-terraform/commit/c54a1c71b05adaf8a23a15b90b5827c3cc08061b))
+
+
+### Code Refactoring
+
+* **action:** change inputs/outputs from underscores to dashes ([c54a1c7](https://github.com/autero1/action-terraform/commit/c54a1c71b05adaf8a23a15b90b5827c3cc08061b))
+
 ## [2.0.0](https://github.com/autero1/action-terraform/compare/v1.1.1...v2.0.0) (2024-02-17)
 
 
