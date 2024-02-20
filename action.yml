@@ -2,11 +2,14 @@ name: 'Terraform installer'
 description: 'Install a specific version of terraform binary.'
 author: 'Petri Autero'
 inputs:
-  terraform_version:
+  terraform-version:
     description: 'Terraform version to install'
-    required: true
+    required: false
+  terraform-version-file:
+    description: 'File containing the Terraform version to install.  Examples: .terraform-version'
+    required: false
 outputs:
-  terraform_path:
+  terraform-path:
     description: 'Path to the terraform binary'
 branding:
   icon: cloud

@@ -1,7 +1,7 @@
-export interface Inputs {
+export type Inputs = {
   readonly TerraformVersion: string;
-}
+};
 
-export interface Outputs {
+export type Outputs = {
   readonly TerraformPath: string;
-}
+};

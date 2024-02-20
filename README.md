@@ -8,6 +8,11 @@
 
 Set up your GitHub Actions workflow with a specific version of [Terraform](https://www.terraform.io/).
 
+## Special Notice
+From version v3.0.0, the inputs and outputs are changed to dash-separated version (`terraform-version`, `terraform-version-file`, `terraform-path`).
+
+This convention aligns with the YAML style guide and is more prevalent in the GitHub Actions community and documentation.
+
 ## Usage
 
 The next example step will install Terraform 1.2.8.
@@ -23,26 +28,48 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Setup Terraform
-        uses: autero1/action-terraform@v2
+        uses: autero1/action-terraform@v3
         with:
-          terraform_version: 1.2.8
+          terraform-version: 1.2.8
+      - name: Interact with Terraform
+        run: terraform --version
+```
+If you want to use a version file, e.g. `.terraform-version`, you can use the following example:
+
+```yaml
+name: Example workflow
+
+on: [push]
+
+jobs:
+  example:
+    name: Example Terraform interaction
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Terraform
+        uses: autero1/action-terraform@v3
+        with:
+          terraform-version-file: .terraform-version
       - name: Interact with Terraform
         run: terraform --version
 ```
 
 ### Inputs
 
-| Parameter | Description | Required |
-| --------- | ----------- | -------- |
-| `terraform_version` | Terraform [version](https://releases.hashicorp.com/terraform/) to deploy | true |
+| Parameter                | Description | Required |
+|--------------------------| ----------- | -------- |
+| `terraform-version`      | Terraform [version](https://releases.hashicorp.com/terraform/) to deploy | either version or version file required |
+| `terraform-version-file` | File containing the Terraform version to install. | either version or version file required |
 
 ### Outputs
 
-| Parameter | Description |
-| --------- | ----------- |
-| `terraform_path` | Cached tool path of Terraform |
+| Parameter        | Description |
+|------------------| ----------- |
+| `terraform-path` | Cached tool path of Terraform |
 
 ### Supported platforms
 
