@@ -1,0 +1,19 @@
+name: Test Action Release Version
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-release-version:
+    runs-on: "ubuntu-22.04"
+    steps:
+      - uses: autero1/action-terraform@v3
+        with:
+          terraform-version: 1.5.7
+      - name: Validate
+        run: terraform --version
+      - uses: autero1/action-terraform@v3
+        with:
+          terraform-version: latest
+      - name: Validate
+        run: terraform --version
