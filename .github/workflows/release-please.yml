@@ -48,7 +48,7 @@ jobs:
     - name: Create PR with lib
       uses: peter-evans/create-pull-request@v6
       with:
-        token: ${{ secrets.ACTIONS_BOT_TOKEN }}
+        token: ${{ secrets.GITHUB_TOKEN }}
         commit-message: Build lib
         author: "actions-bot <github-actions-bot@google.com>"
         title: "chore: build lib"
@@ -58,7 +58,6 @@ jobs:
         labels: automated pr
         branch: create-pull-request/build-lib
         delete-branch: true
-        push-to-fork: google-github-actions-bot/${{env.ACTION_NAME}}
   release-please-release:
     runs-on: ubuntu-latest
     needs: [build]
@@ -68,17 +67,3 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           release-type: node
-          skip-github-pull-request: true
-  release-please-pr:
-    runs-on: ubuntu-latest
-    needs:
-      - build
-      - release-please-release
-    steps:
-      - id: release-pr
-        uses: google-github-actions/release-please-action@v4
-        with:
-          token: ${{ secrets.ACTIONS_BOT_TOKEN }}
-          release-type: node
-          fork: true
-          skip-github-release: true
