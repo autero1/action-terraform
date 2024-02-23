@@ -1,6 +1,13 @@
 # Changelog
 
 
+## [3.0.1](https://github.com/autero1/action-terraform/compare/v3.0.0...v3.0.1) (2024-02-23)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @types/node to v20.11.20 ([#361](https://github.com/autero1/action-terraform/issues/361)) ([150d448](https://github.com/autero1/action-terraform/commit/150d44856803ddecabc41c41c893d2c18820b525))
+
 ## [3.0.0](https://github.com/autero1/action-terraform/compare/v2.0.0...v3.0.0) (2024-02-20)
 
 
